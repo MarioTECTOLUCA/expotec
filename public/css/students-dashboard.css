@@ -1,0 +1,25 @@
+.sidebar.sidebar-dark.accordion.bg-gradient-primary {
+    background: #1b396a;
+}
+  
+  img {
+    width: 80px;
+  }
+  
+  .nav-item-transition {
+    background: linear-gradient(to right, #1b396a 50%, #f48120 50%) left;
+    background-size: 200%;
+    transition: .5s ease-out;
+  }
+  
+  .nav-item-transition:hover {
+    background-position: right;
+  }
+
+  .bg-orange-standar {
+    background-color: #f48120;
+  }
+
+  .text-blue-standar {
+    color: #1b396a;
+  }

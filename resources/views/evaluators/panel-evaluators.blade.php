@@ -1,0 +1,61 @@
+@extends('layouts.evaluators-private')
+
+@section('body')
+    <div class="card shadow col-12">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col">
+                    <h4 class="text-blue-standar m-0 fw-bold">{{ __('adviser-dashboard.califications-header') }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="teamsEvaluatorTable" class="table table-striped table-hover" style="80%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ __('adviser-dashboard.califications-column-team') }}</th>
+                        <th>{{ __('adviser-dashboard.califications-column-categorie') }}</th>
+                        <th>{{ __('adviser-dashboard.califications-column-score') }}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($teams as $item)
+                            <tr>
+                            <td>{{$item->TeamId}}</td>
+                            <td>{{$item->nameTeam}}</td>
+                            <td>{{$item->categorieName}}</td>
+                            <td>{{$item->score}}</td>
+                            <td>
+                                <a class="btn btn-success">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-danger" >
+                                    {{ __('students-dashboard.team-dt-btn-table') }} <i class="fa fa-remove"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ __('adviser-dashboard.califications-column-team') }}</th>
+                        <th>{{ __('adviser-dashboard.califications-column-categorie') }}</th>
+                        <th>{{ __('adviser-dashboard.califications-column-score') }}</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#teamsEvaluatorTable').DataTable();
+        });
+    </script>
+@endpush

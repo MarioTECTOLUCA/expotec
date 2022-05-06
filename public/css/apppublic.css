@@ -1,0 +1,41 @@
+.navbar-header{
+    background: #1B396A;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link:focus, .navbar-light .nav-item .navbar-nav .nav-link:hover {
+    color: gray;
+}
+
+.goberment-info{
+    background: #343a40;
+}
+
+.goberment-img-brand{
+    max-height: 46px;
+    min-height: 20px;
+    min-width: 72px;
+}
+
+.ittol-info-footer{
+    color: #245c4f;
+    margin-bottom: 0px;
+    font-size: 10px;
+}
+
+.btn-login{
+    color: #128400;
+    font-weight: bold;
+    font-family: VT323, monospace;
+    font-size: 20px;
+    padding: 6px;
+    border: 3px dashed #128400 ;
+}
+
+.btn-login:hover{
+    background-color: #128400;
+    color: white;
+    font-weight: bold;
+    font-family: VT323, monospace;
+    font-size: 20px;
+    padding: 6px;
+}
