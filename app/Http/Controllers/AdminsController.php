@@ -54,6 +54,9 @@ class AdminsController extends Controller
                                                 'events' => Events::all()]);
     }
 
+    public function calificationsView(){
+        return view('admin._panel-califications',[  'teams' => DB::select("SELECT id,teamId,teamName, SUM(score) AS 'score', categorieName FROM califications_view WHERE vbo = 1 GROUP BY teamId,teamName,categorieName")]);
+    }
     /**
      * Show the form for creating a new resource.
      *

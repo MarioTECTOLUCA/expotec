@@ -11,12 +11,14 @@ class califications_view extends Model
     protected $table = 'califications_view';
     protected $primaryKey = 'id';
     public $timestamps  = false;
-    protected $fillable = [ "fk_eva_has_items",
-                            "fk_team",
-                            "fk_evaluator",
-                            "fk_categorie",
+    protected $fillable = [ "teamId",
+                            "teamName",
+                            "vbo",
+                            "itemId",
+                            "itemName",
                             "score",
-                            "date",
-                            "nameTeam",
-                            "categorieName", ];
+                            "categorieId",
+                            "categorieName",
+                            "evaluatorId",
+                            "evaluatorName", ];
 }

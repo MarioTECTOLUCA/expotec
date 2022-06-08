@@ -23,14 +23,26 @@
                 <tbody>
                     @foreach ($teams as $item)
                             <tr>
-                            <td>{{$item->TeamId}}</td>
-                            <td>{{$item->nameTeam}}</td>
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->teamName}}</td>
                             <td>{{$item->categorieName}}</td>
-                            <td>{{$item->score}}</td>
+                            @if ($item->score == null)
+                                <td>-.-</td>
+                            @else
+                                <td>{{$item->score}}</td>
+                            @endif
+                            
                             <td>
-                                <a class="btn btn-success">
-                                    <i class="fa fa-eye"></i>
-                                </a>
+                                @if ($item->score == null)
+                                    <a class="btn btn-success" href="{{route('evaluator-evaluation',$item->teamId)}}">
+                                        Evaluacion <i class="fas fa-book-open"></i>
+                                    </a>
+                                @else
+                                    <a class="btn btn-success" href="{{route('evaluator-evaluation-view',$item->teamId)}}">
+                                        Ver <i class="fas fa-edit fa-fw"></i>
+                                    </a>
+                                @endif
+                                
                                 <a class="btn btn-outline-danger" >
                                     {{ __('students-dashboard.team-dt-btn-table') }} <i class="fa fa-remove"></i>
                                 </a>

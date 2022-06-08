@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\newPasswordMailable;
 use App\Mail\requestEvaluator;
 use App\Models\califications_view;
 use App\Models\Evaluators;
-use App\Models\Requests;
 use App\Models\Requestsview;
-use App\Models\Teams;
-use App\Models\TeamsView;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -21,7 +19,7 @@ class EvaluatorsController extends Controller
     public function index()
     {
         return view('evaluators.panel-evaluators',[ 'notifications' => Requestsview::where('fk_evaluator','=',session()->get('LoggedUser')->id)->get(),
-                                                    'teams' => califications_view::where('fk_categorie','=',session()->get('LoggedUser')->fk_categorie)->get()]);
+                                                    'teams' => DB::select("SELECT id,teamId,teamName, SUM(score) AS 'score', categorieName FROM califications_view WHERE categorieId = ".session()->get('LoggedUser')->fk_categorie." AND vbo = 1 GROUP BY teamId,teamName,categorieName")]);
     }
 
     public function create()
@@ -67,6 +65,20 @@ class EvaluatorsController extends Controller
             }
         }else{
             return false;
+        }
+    }
+
+    public function editPassword(Evaluators $evaluator){
+        $pass = Str::random(8);
+        $evaluator->password = Hash::make($pass);
+        if($evaluator->save()){
+            $data = [
+                'name' => $evaluator->name,
+                'password' => $pass,
+            ];
+            Mail::to($evaluator->email)->send(new newPasswordMailable($data));
+            notify()->success(__('admin-dashboard.NOTIFY-UPDATEPASS-STUDENT-SUCCESS'),__('public.SUCCESS'));
+            return redirect()->route('admins.evaluators');    
         }
     }
 

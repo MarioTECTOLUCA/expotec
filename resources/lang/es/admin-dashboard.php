@@ -214,6 +214,10 @@ return [
     'students-action-table-delete' => "Seguro deseas eliminar al alumno :attribute? esta accion eliminara todo registro!!! ",
     'students-dt-btn-modal' => 'Confirmar ',
     'students-cancel-btn-modal' => 'Cancelar ',
-    'students-delete-student' => 'Seguro deses eliminar al estudiante :attribute?'
+    'students-delete-student' => 'Seguro deses eliminar al estudiante :attribute?',
+
+    //Evaluators
+    'evaluator-action-table-resetPassword' => 'Seguro deseas actualizar la contraseña del usuraio :attribute se le notificara por correo avisa al usuario.'
+
 
 ];

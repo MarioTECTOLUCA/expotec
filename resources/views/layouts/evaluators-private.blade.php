@@ -19,7 +19,7 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item nav-item-transition">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('evaluator.panel')}}">
                             <i class="fas fa-list"></i>
                             <span>{{ __('adviser-dashboard.califaciones') }}</span>
                         </a>

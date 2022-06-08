@@ -36,9 +36,10 @@
                                 <i class="fa fa-eye"></i>
                             </a>
                             @include('components.private._update-evaluator')
-                            <a  class="btn btn-outline-warning">
+                            <a  class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#evaluatorresetpasswordModal-{{$item->id}}">
                                 <i class="fas fa-key"></i>
                             </a>
+                            @include('components.private._password-from-evaluator')
                             <a  class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteFromEvaluator-{{$item->id}}">
                                 <i class="fa fa-trash"></i>
                             </a>

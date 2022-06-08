@@ -17,7 +17,7 @@ class EnsureRoleIsValid
     public function handle(Request $request, Closure $next)
     {
         if (session()->has('LoggedUser')) {
-            if(session()->get('LoggedUser')->role == 1 || session()->get('LoggedUser')->role == 0){
+            if(session()->get('LoggedUser')->role == 3 || session()->get('LoggedUser')->role == 2){
                 return $next($request);
             }
         }

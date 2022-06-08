@@ -78,6 +78,10 @@
                                         <li class="nav-item">
                                             <a class="nav-link text-white fs-6 fw-bolder" href="{{route('evaluator.panel')}}">{{ __('landingpage.PABELEVALUADORES') }}</a>
                                         </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a class="nav-link text-white fs-6 fw-bolder" href="{{route('admins.panel')}}">{{ __('landingpage.PABELADMINS') }}</a>
+                                        </li>
                                     @endif
                                 @endif
                             @endif

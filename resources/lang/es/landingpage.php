@@ -17,6 +17,7 @@ return [
     'PANELESTUDIANTES' => 'Panel de estudiantes',
     'PABELASESORES' => 'Panel de asesores',
     'PABELEVALUADORES' => 'Panel de evaluadores',
+    'PABELADMINS' => 'Panel de administradores',
     'ENTRAR-EMAIL' => 'Numero de control o email',
     'ENTRAR-CONTRASEÑA' => 'Ingresa la contraseña',
     'ENTRAR-BOTON' => 'Entrar',

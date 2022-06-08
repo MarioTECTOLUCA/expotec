@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\AdvisersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalificationController;
 use App\Http\Controllers\CareersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\EvaluationsController;
@@ -37,6 +38,7 @@ Route::group(['middleware'=>['auth']], function(){
         Route::get('/panel-a-evaluations',[AdminsController::class,'evaluationsView'])->name('admins.evaluations')->middleware('isAdmin');
         Route::get('/panel-a-advisers',[AdminsController::class,'advisersView'])->name('admins.advisers')->middleware('isAdmin');
         Route::get('/panel-a-evaluators',[AdminsController::class,'evaluatorsView'])->name('admins.evaluators')->middleware('isAdmin');
+        Route::get('/panel-a-califications',[AdminsController::class,'calificationsView'])->name('admins.califications')->middleware('isAdmin');
 
             //Categories
             Route::post('/panel-a-categories-store',[CategoriesController::class,'store'])->name('admins.categories-store')->middleware('isAdmin');
@@ -72,7 +74,9 @@ Route::group(['middleware'=>['auth']], function(){
             Route::post('/panel-a-evaluators-store',[EvaluatorsController::class,'store'])->name('admin.evaluators-store')->middleware('isAdmin');
             Route::post('/panel-a-evaluators-update/{evaluator}',[EvaluatorsController::class,'update'])->name('admin.evaluators-update')->middleware('isAdmin');
             Route::delete('/panel-a-evaluators-delete/{adviser}',[EvaluatorsController::class,'destroy'])->name('admin.evaluators-destroy')->middleware('isAdmin');
-
+            Route::get('/panle-a-evaluators-pass/{evaluator}',[EvaluatorsController::class,'editPassword'])->name('admin.evaluators-pass')->middleware('isAdmin');
+            //Califications
+            
 
     //Students
     Route::get('/panel-estudiantes',[studentsController::class,'panel'])->name('students.panel')->middleware('isStudent');
@@ -105,5 +109,9 @@ Route::group(['middleware'=>['auth']], function(){
 
     //Evaluators
     Route::get('/panel-evaluator',[EvaluatorsController::class,'index'])->name('evaluator.panel')->middleware('isEvaluator');
+    Route::get('/panel-evaluator-evaluation/{id}',[CalificationController::class,'show'])->name('evaluator-evaluation')->middleware('isAdminOrEvaluator');
+    Route::post('/panel-evaluator-evaluation-store',[CalificationController::class,'store'])->name('evaluator-evaluation-store')->middleware('isAdminOrEvaluator');
+    Route::get('/panel-evaluator-evaluation-view/{id}',[CalificationController::class,'view'])->name('evaluator-evaluation-view')->middleware('isAdminOrEvaluator');
+    Route::post('/panel-evaluator-evaluation-update',[CalificationController::class,'update'])->name('evaluator-evaluation-update')->middleware('isAdminOrEvaluator');
 });
 

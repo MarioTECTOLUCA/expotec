@@ -58,3 +58,24 @@ SELECT  `califications`.*,
         `teams`.`name` as "teamName", 
         `categories`.`name` as "categorieName" 
 FROM `califications` LEFT JOIN `teams` ON `califications`.`fk_team` = `teams`.`id` LEFT JOIN `categories` ON `teams`.`fk_categorie` = `categories`.`id`;
+
+CREATE VIEW califications_view AS 
+select 	`exposis`.`teams`.`id` AS `teamId`,
+        `exposis`.`teams`.`name` AS `teamName`,
+        `exposis`.`teams`.`vbo`,
+        `exposis`.`evaluations_has_items`.`fk_items` AS `itemId`,
+        `exposis`.`items`.`name` AS `itemName`,
+        `exposis`.`items`.`score` AS `itemScore`,
+        `exposis`.`califications`.`score` AS `score`,
+        `exposis`.`teams`.`fk_categorie` AS `categorieId`,
+        `exposis`.`categories`.`name` AS `categorieName`,
+        `exposis`.`evaluators`.`id` AS `evaluatorId`,
+        `exposis`.`evaluators`.`name` AS `evaluatorName` 
+from `exposis`.`teams` 
+left join `exposis`.`califications` on `exposis`.`califications`.`fk_team` = `exposis`.`teams`.`id`
+left join `exposis`.`categories` on `exposis`.`teams`.`fk_categorie` = `exposis`.`categories`.`id`
+left join `exposis`.`evaluators` on `exposis`.`califications`.`fk_evaluator` = `exposis`.`evaluators`.`id`
+left join `exposis`.`evaluations_has_items` on `exposis`.`califications`.`fk_eva_has_items` = `exposis`.`evaluations_has_items`.`id`
+left join `exposis`.`items` on `exposis`.`evaluations_has_items`.`fk_items` = `exposis`.`items`.`id`;
+
+ 

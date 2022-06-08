@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-item nav-item-transition">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('admins.califications')}}">
                             <i class="fas fa-list"></i>
                             <span>{{ __('admin-dashboard.califaciones') }}</span>
                         </a>
